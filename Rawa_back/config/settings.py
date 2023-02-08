@@ -38,9 +38,20 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     'apps.accounts',
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
 
 
 MIDDLEWARE = [
