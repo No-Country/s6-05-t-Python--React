@@ -34,11 +34,13 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'rest_framework',
+    'drf_yasg',
 ]
 
 THIRD_PARTY_APPS = [
     'apps.accounts',
-    'drf_yasg',
+    'apps.community',
+    'apps.chat',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
