@@ -31,7 +31,7 @@ const Header = () => {
             <div className="md:flex md:flex-row md:pt-5">
                 {grupos.map((artista, index)=>{
                     return(
-                        <div style={{backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 48.44%, #212121 100%), url(${artista.image})`, width: "20%", height: "500px", backgroundPosition: "center", backgroundSize: "cover"
+                        <div style={{backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 48.44%, #212121 100%), url(${artista.image})`, width: "20%", height: "350px", backgroundPosition: "center", backgroundSize: "cover"
                     }}
                         className="rounded-2xl relative"
                         >

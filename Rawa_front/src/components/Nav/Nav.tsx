@@ -11,7 +11,7 @@ const Nav = () => {
             <div style={{width: "min-content"}} className="bg-white text-black pr-5 pl-5 pt-1 pb-1 rounded-2xl">
                 <h2 className="font-bold text-2xl">RAWA</h2>
             </div>
-            <ul className="md:flex md:justify-between md:w-1/4 md:items-center">
+            <ul className="md:flex md:justify-between md:w-1/3 md:items-center">
                 <SearchIcon/>
                 <li className="font-bold text-white"><DarkMode/></li>
                 <li className="font-bold text-white">Language</li>
