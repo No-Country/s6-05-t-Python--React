@@ -7,6 +7,9 @@ import Nav from "./components/Nav/Nav";
 export default function App() {
   return (
     <div className="h-screen dark:bg-gray-800">
+      <Nav/>
+      <Header/>
+      <Divider/>
     </div>
   );
 }
