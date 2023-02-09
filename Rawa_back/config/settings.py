@@ -14,13 +14,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-DEBUG = env('DEBUG')
+# DEBUG = env('DEBUG')
+DEBUG = True
+# SECRET_KEY = env('SECRET_KEY')
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "ABC1234"
 
 AUTH_USER_MODEL = 'accounts.User'
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,14 +37,15 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'rest_framework',
-    'drf_yasg',
-]
-
-THIRD_PARTY_APPS = [
     'apps.accounts',
     'apps.community',
     'apps.chat',
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'drf_yasg',
+    'channels',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -92,7 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = db.POSTGRESQL
+DATABASES = db.SQLITE
 
 
 # Password validation
@@ -141,3 +144,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #config static nube
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated' no se si quedara activo o no
+    ],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
+
+MESSAGES_TO_LOAD = 15
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "core.routing.channel_routing",
+    },
+}
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+ASGI_APPLICATION = 'config.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
