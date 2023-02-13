@@ -6,7 +6,7 @@ from django.contrib.auth.models import (
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    full_name = models.CharField(max_length=255, unique=True)
+    full_name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='user/', default='profile.png', blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     artist = models.BooleanField(default=False)
