@@ -146,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    'django_tutorial/static']
+    'config/static']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
