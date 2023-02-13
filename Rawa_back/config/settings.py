@@ -134,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -142,11 +142,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #config static nube
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, '/home/lucin21/s6-05-t-Python--React/Rawa_back')]
-MEDIA_ROOT = "/home/lucin21/s6-05-t-Python--React/Rawa_back/media"
-MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    'django_tutorial/static']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
