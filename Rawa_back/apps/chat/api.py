@@ -31,6 +31,7 @@ class MessageModelViewSet(ModelViewSet):
     authentication_classes = (CsrfExemptSessionAuthentication,)
     pagination_class = MessagePagination
 
+
     def list(self, request, *args, **kwargs):
         self.queryset = self.queryset.filter(Q(recipient=request.user) |
                                              Q(user=request.user))
