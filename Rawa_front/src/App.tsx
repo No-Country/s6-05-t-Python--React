@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { Register } from "./pages/Register";
+import Artist from "./pages/Artist";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route element={<Home/>} path={"/"}/>
         <Route element={<Login/>} path={"/login"}/>
         <Route element={<Register/>} path={"/register"}/>
+        <Route element={<Artist/>} path={"/artist/:id"} />
       </Routes>
     </BrowserRouter>
     </>
