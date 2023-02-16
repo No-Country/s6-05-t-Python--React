@@ -7,6 +7,7 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
 
+
 class MessageModel(Model):
     """
     Esta clase representa el modelo de los mensajes, tiene un owner (user), timestamp, mensaje body y el receptor

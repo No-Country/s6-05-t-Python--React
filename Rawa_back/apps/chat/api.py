@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import SessionAuthentication
 
+
 from config import settings
 from apps.chat.serializers import MessageModelSerializer, UserModelSerializer
 from apps.chat.models import MessageModel
