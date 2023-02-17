@@ -4,6 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from .models import Community
+from .models import GroupCommunity
 import json
 
 class CommunityView(View):
@@ -60,6 +61,59 @@ class CommunityView(View):
             datos={'message': "Community not found..."}
         return JsonResponse(datos)
 
+class GroupCommunityView(View):
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, id=0):
+        if (id>0):
+            groupcommunities=list(GroupCommunity.objects.filter(id=id).values())
+            if len(groupcommunities)>0:
+                groupcommunity=groupcommunities[0]
+                datos={'massage': "Perfect", 'groupcommunity': groupcommunity}
+            else:
+                dato={'message': "GroupCommunity not found..."}
+            return JsonResponse(datos)
+        else:
+            groupcommunities=list(GroupCommunity.objects.values())
+            if len(groupcommunities)>0:
+                datos={'message': "Perfect", 'groupcommunities': groupcommunities}
+            else:
+                datos={'message': "Oops, Groupcommunities not found..."}
+            return JsonResponse(datos)
+
+    def post(self, request):
+        # print(request.body)
+        jd=json.loads(request.body)
+        GroupCommunity.objects.creats(community_category=jd['community_category'], description=jd['description'], image=jd['image'], feed=jd['feed'], date_publication=jd['date_publication'])
+        datos={'message': "Perfect"}
+        return JsonResponse(datos)
+
+    def put(self, request, id):
+        jd = json.loads(request.body)
+        groupcommunities=list(GroupCommunity.objects.filter(id=id).values())
+        if len(groupcommunities)>0:
+            GroupCommunity+GroupCommunity.objects.get(id=id)
+            GroupCommunity.name=jd['community_category']
+            GroupCommunity.description=jd['description']
+            GroupCommunity.image=jd['image']
+            GroupCommunity.verify=jd['feed']
+            GroupCommunity.date_publication=jd['date_publication']
+            GroupCommunity.save()
+            datos={'message': "Perfect"}
+        else:
+            datos={'message': 'GroupCommunity not found...'}
+        return JsonResponse(datos)
+
+    def delet(self, request, id):
+        groupcommunities=list(GroupCommunity.objects.filter(id=id).values())
+        if len(groupcommunities)>0:
+            GroupCommunity.objects.filter(id=id).delete()
+            datos={'message': "Perfect"}
+        else:
+            datos={'message': "GroupCommunity not found..."}
+        return JsonResponse(datos)
 
 # Create your views here.
