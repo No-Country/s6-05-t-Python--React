@@ -49,11 +49,11 @@ const FeedSection = ({artistId}) => {
                     </div>
                     <div className="flex flex-col p-4">
                         <div className="flex flex-col mb-2">
-                            <ul className="flex items-center justify-between font-bold">
+                            <ul className="flex items-center justify-between font-moch text-xs">
                                 <li className="cursor-pointer">Privacy Settings</li>
                                 <li className="cursor-pointer">Language</li>
                             </ul>
-                            <ul className="flex items-center justify-between font-bold">
+                            <ul className="flex items-center justify-between font-moch text-xs">
                                 <li className="cursor-pointer">Cockie Settings</li>
                                 <li className="cursor-pointer">Terms of Use</li>
                             </ul>

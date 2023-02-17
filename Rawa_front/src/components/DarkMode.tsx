@@ -17,11 +17,11 @@ export const DarkMode = () => {
 
   return (
     <button onClick={handlerTheme}>
-      <span className="dark:hover:text-borderDarkmode dark:text-white hover:text-primarioH  dark:hidden flex flex-row items-center gap-x-3  text-bold">
+      <span className="dark:hover:text-borderDarkmode font-moch dark:text-white hover:text-primarioH  dark:hidden flex flex-row items-center gap-x-3">
         DarkMode
       </span>
 
-      <span className="dark:hover:text-borderDarkmode dark:text-white hover:text-primarioH  hidden dark:flex flex-row items-center gap-x-3  text-bold">
+      <span className="dark:hover:text-borderDarkmode font-moch dark:text-white hover:text-primarioH  hidden dark:flex flex-row items-center gap-x-3">
         LightMode
       </span>
     </button>

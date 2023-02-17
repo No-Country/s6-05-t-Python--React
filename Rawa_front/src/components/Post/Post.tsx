@@ -10,7 +10,7 @@ const Post = ({post}) =>{
                 , backgroundPosition: "center", backgroundSize: "cover"
                 }}></div>
                 <div className="md:ml-5">
-                    <h3 className="font-bold">{post.artist}Post</h3>
+                    <h3 className="font-moch mb-3">{post.artist}Post</h3>
                     <p> {post.content} </p>
                 </div>
             </div>

@@ -33,7 +33,7 @@ const Header = () => {
     return(
         <header className=" md:pt-10 md:pb-10 md:pl-32 md:pr-32">
             <div>
-                <h2 className="font-bold text-2xl text-black">New Media</h2>
+                <h2 className="text-2xl text-black font-moch">New Media</h2>
             </div>
             <div className="md:flex md:flex-row md:pt-5">
                 {grupos.map((artista, index)=>{
