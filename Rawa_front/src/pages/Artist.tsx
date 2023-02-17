@@ -29,7 +29,7 @@ const Artist = () => {
                     onClick={()=>setIsFeed(!isFeed)}
                     >Media</h3>
                 </div>
-                {isFeed ? <FeedSection/> : <MediaSection/>}
+                {isFeed ? <FeedSection artistId={id}/> : <MediaSection/>}
             </div>
         </div>
     )
