@@ -1,9 +1,10 @@
 from django.db import models
+from django.db.models import (Model, TextField, DateTimeField, ForeignKey, CASCADE)
 
 # Create your models here.
-class Community:
+class Community(models.Model):
     id_community=models.AutoField (primary_key=True)
-    name=models.ChartField (max_length=200, blank=False, null=False)
+    name=models.CharField (max_length=200, blank=False, null=False)
     description=models.TextField (blank=False, null=False)
     image=models.ImageField (upload_to='community/', default='community.png', blank=True, null=True)
     verify=models.BooleanField (default=True)
@@ -17,10 +18,10 @@ class Community:
         ordering = ['name']
 
 
-class GroupCommunity:
+class GroupCommunity(models.Model):
     
-    id = models.ForeignKey(Community, on_delete=models.CASCADE)
-    hobby = models.CharField(max_length=200)
+    id_group = models.AutoField (primary_key=True)
+    community_category = models.ForeignKey(Community, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='group/', default='group.png', blank=True, null=True)
     feed = models.TextField(blank=True, null=True),
