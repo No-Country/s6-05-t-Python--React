@@ -18,8 +18,8 @@ const Artist = () => {
                     <p className="md:mt-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia totam voluptas amet, quod explicabo, expedita cumque facere eveniet eligendi architecto sint illum aliquid hic dolore rerum distinctio corporis saepe accusamus eaque ipsa quae natus esse perspiciatis. Qui, perferendis! Tempora, accusamus!</p>
                 </div>
             </div>
-            <div className="mt-10 mb-10">
-                <div className="border-b-8 flex md:flex-row items-center justify-around md:mb-10">
+            <div className="mt-10">
+                <div className="border-b-8 flex md:flex-row items-center justify-around">
                     <h3 
                     className={isFeed ? "font-moch cursor-pointer text-priColor border-b-8 border-priColor font-bold text-4xl" : "font-moch cursor-pointer font-bold text-4xl"}
                     onClick={()=>setIsFeed(!isFeed)}
@@ -29,7 +29,7 @@ const Artist = () => {
                     onClick={()=>setIsFeed(!isFeed)}
                     >Media</h3>
                 </div>
-                {isFeed ? <FeedSection artistId={id}/> : <MediaSection/>}
+                {isFeed ? <FeedSection artistId={id}/> : <MediaSection artistId={id}/>}
             </div>
         </div>
     )

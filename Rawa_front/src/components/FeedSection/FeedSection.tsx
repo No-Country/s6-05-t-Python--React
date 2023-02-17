@@ -32,11 +32,11 @@ const FeedSection = ({artistId}) => {
                     )
                 })}
             </div>
-            <div className="w-6/12">
+            <div className="w-6/12 mt-5">
                 <div
                 className="w-full bg-black rounded-2xl md:mb-3"
                 style={{height: "60%", backgroundImage: `url(/${artistId}.png)`,
-                backgroundSize: "cover"
+                backgroundSize: "cover", backgroundPosition: "center"
                 }}
                 >
                 </div>
@@ -59,11 +59,11 @@ const FeedSection = ({artistId}) => {
                             </ul>
                         </div>
                         <div className="flex items-center justify-between mb-2">
-                            <FacebookIcon/>
+                            <FacebookIcon color={"#212121"}/>
                             <TwitterIcon color={"#212121"}/>
-                            <YoutubeIcon/>
-                            <InstagramIcon/>
-                            <SpotifyIcon/>
+                            <YoutubeIcon color={"#212121"}/>
+                            <InstagramIcon color={"#212121"}/>
+                            <SpotifyIcon color={"#212121"}/>
                         </div>
                         <div className="flex justify-center items-center">
                             <strong className="mr-3">@rawateam</strong>
