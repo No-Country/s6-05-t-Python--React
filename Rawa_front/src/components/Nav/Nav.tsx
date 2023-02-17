@@ -17,7 +17,7 @@ const Nav = () => {
             <ul className="md:flex md:justify-between md:w-1/3 md:items-center">
                 <SearchIcon/>
                 <li className="font-bold text-white"><DarkMode/></li>
-                <li className="font-bold text-white">Language</li>
+                <li className="font-bold text-white cursor-pointer">Language</li>
                 {isLogin ? <li className="font-bold text-white">User</li> :
                 <Link to={"/login"}>
                     <button className="font-bold text-white bg-gray-800 md:pt-3 md:pb-3 md:pl-10 md:pr-10

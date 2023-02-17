@@ -7,7 +7,7 @@ const Artist = () => {
 
     const {id} = useParams()
 
-    const [isFeed, setIsFeed] = useState(true)
+    const [isFeed, setIsFeed] = useState<Boolean>(true)
 
     return(
         <div className="md:pl-64 md:pr-64 md:pt-10">

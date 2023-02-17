@@ -1,8 +1,8 @@
 import ComentIcon from "../../Icons/ComentIcon";
 import LikeIcon from "../../Icons/LikeIcon";
 
-
 const Post = ({post}) =>{
+
     return(
         <div className="border-b-2 md:p-4">
             <div className="md:flex">
