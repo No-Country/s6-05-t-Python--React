@@ -1,8 +1,8 @@
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from apps.accounts.serializer import RegisterSerializer, LoginSerializer
+from apps.accounts.serializer import RegisterSerializer, LoginSerializer, LogoutSerializer
 from apps.accounts.verify import email_confirm
 
 
@@ -35,15 +35,15 @@ class VerifyEmail(APIView):
         pass
 
 
-# class LogoutAPIView(GenericAPIView):
-#     serializer_class = LogoutSerializer
-#
-#     permission_classes = (permissions.IsAuthenticated,)
-#
-#     def post(self, request):
-#
-#         serializer = self.serializer_class(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response({'message': 'Sesión cerrada correctamente.'}, status=status.HTTP_200_OK)
-#         return Response({'error': 'No existe este usuario.'}, status=status.HTTP_400_BAD_REQUEST)
+class LogoutAPIView(GenericAPIView):
+    serializer_class = LogoutSerializer
+
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request):
+
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Sesión cerrada correctamente.'}, status=status.HTTP_200_OK)
+        return Response({'error': 'No existe este usuario.'}, status=status.HTTP_400_BAD_REQUEST)
