@@ -1,14 +1,36 @@
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.authtoken.models import Token
-
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from apps.accounts.api.serializers import UserRegisterSerializer, UserSerializer, UserUpdateSerializer
 from apps.accounts.models import User
-from apps.accounts.api.serializer import UserSerializer
 
-class UserApiViewSet(ModelViewSet):
-    serializer_class= UserSerializer
-    queryset = User.objects.all()
-    # token = Token.objects.create(queryset=queryset)
-    # print(queryset)
-    # print(token.key)
 
-## permiso personalizado(rest_framework)
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = UserRegisterSerializer(data=request.data)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        user = User.objects.get(id=request.user.id)
+        serializer = UserUpdateSerializer(user, request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
